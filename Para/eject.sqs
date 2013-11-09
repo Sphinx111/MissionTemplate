@@ -1,0 +1,10 @@
+player allowdamage false;
+player action ["eject",vehicle player];
+~1
+_para = "Steerable_Parachute_F" createVehicle (position player);
+_para setPos (getPos player) 
+~1
+player moveindriver _para;
+~1
+player allowdamage true;
+

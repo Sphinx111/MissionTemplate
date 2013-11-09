@@ -1,0 +1,75 @@
+﻿Respawn = "BASE";
+RespawnDelay = 4;
+
+debriefing=1;
+disabledAI = true;
+OnLoadName = "Template";
+author = "[RG]Yourname";
+onLoadMission= "Pickture Underline";
+overviewPicture = "images\mission.jpg";
+loadScreen ="images\start.jpg";
+showGPS=1;
+
+//Used for the RGNN Reporter (player) character. Provides free roaming camera.
+#include "spectator\spectating.hpp"
+
+
+
+
+
+class Header
+{
+	gameType = COOP; //game type
+	minPlayers=1;
+	maxPlayers=40;
+};
+
+class RscTitles
+{
+	//// Respawn Script - Start ////
+		
+		#include "INS_revive\rsctitles.hpp"
+	//// Respawn Script - End   ////
+};
+
+//// Respawn Script - Start ////
+#include "INS_revive\description.hpp"
+//// Respawn Script - End   ////
+
+class Params
+{
+	// Example Parameter
+	class EmtpyLine0 {
+		title = ":: Mission Settings";
+		values[]={0,0};
+		texts[]={ "",""};
+		default = 0;
+	};
+	class PARAM_TimeOfDay
+	{
+		title = "    Time of Day";
+		values[] = {0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23};
+		texts[] = {"00:00","01:00","02:00","03:00","04:00","05:00","06:00","07:00","08:00","09:00","10:00","11:00","12:00","13:00","14:00","15:00","16:00","17:00","18:00","19:00","20:00","21:00","22:00","23:00"};
+		default = 14;
+	};
+	
+	//// Respawn Script - Start ////
+	#include "INS_revive\params.hpp"
+	//// Respawn Script - End   ////
+};
+
+
+
+class cfgFunctions {
+	//// Respawn Script - Start ////
+	#include "INS_revive\cfgfunctions.hpp"
+	//// Respawn Script - End   ////
+};
+
+class Extended_PreInit_EventHandlers {
+	// Replace mission_name with name of your mission
+	class mission_name { 
+		// If has ace mode, enable ace wound system
+		serverInit = "ace_sys_wounds_enabled = true; publicVariable 'ace_sys_wounds_enabled';";
+	};
+};
