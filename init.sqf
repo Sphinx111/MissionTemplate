@@ -36,7 +36,8 @@ if !(player hasWeapon "ItemGPS") then {player addWeapon "ItemGPS";};
     };
 } foreach (allUnits);
 
-
+//Count civillian kills by NATO units and ends mission when reaching kill limit
+[] execVM "scripts\civkill.sqf";
 
 //Gives you usefull Mapmaker MenuActions Remove before compile to pbo
 [] execVM "EditingHelper\HelperInit.sqf";
