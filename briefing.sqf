@@ -1,5 +1,9 @@
 //save as briefing.sqf and execVM from init.sqf
+//Sphinx: Should be run after player has initialised using the code on next line
+//   (!isDedicated) then {waitUntil {!isNull player && isPlayer player};};
 
+//Switch (side player) checks which side the player loading the briefing file belongs to.
+//Switch command takes a little longer to process than "if" statements, but are much much easier to use and read.
 
 switch (side player) do 
 {
@@ -9,9 +13,11 @@ case WEST: // BLUFOR briefing goes here
 //player createDiaryRecord ["Diary", ["*The Note Title*", "*The Note Message*"]];
 
 
-
-
-
+//Sphinx: The command CreateDiaryRecord creates a subheading underneath the main topics when you open the map screen ingame.
+//In the code above ""CreateDiaryRecord ["Diary",["" will create a subheading underneath the Diary topic.
+//If you want to create an entirely new heading, you can use the command: CreateDiarySubject. An example is given on the next line
+//     player createDiarySubject ["Name to refer to topic, ie Diary","Topic name shown to player"]; 
+//or:  player createDiarySubject ["Name to refer to topic, ie Diary","Topic name shown to player","Path to Image to add to the topic"];
 
 _notes = player createDiaryRecord ["Diary",["Credits","
 <font color='#FF0000'>Credits</font>
@@ -101,7 +107,12 @@ Force Procection:<br/>
 
 
 
-
+//Sphinx: "CreateSimpleTask" command is now deprecated. Use the function "BIS_Fnc_SetTask" instead.
+//instructions for use can be found in Function Browser in 2d editor or online at http://pastebin.com/d9iPpeCE
+//An example replacement is provided in the next line below.
+//   ["taskname",west,["Description of the example task","Example task name (pops up in screen)","What will be displayed on the map"],[TargetObject,50],1,true,false] call BIS_fnc_SetTask;
+//This function does not need to be run from the briefing.sqf file and can be used anywhere.
+//If the file containing this function is loaded by each client, the last argument should read false, if the file containing it is on the server only, it should read true (to send the task to all clients).
 
 //Task1 - COMMENT
 //task_1 = player createSimpleTask ["TASKNAME"]; 
