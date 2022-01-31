@@ -1,7 +1,7 @@
 MissionTemplate
 ===============
 
-RG Template mission 
+A template for Arma 3 Community "Reality Gaming", allowing users to quickly build new content suitable for longer campaigns.
 
 This repository contains mission templates for the Gaming Community Reality Gaming. 
 This is not intended as a finished mission repository, but is here as a collaborative tool
